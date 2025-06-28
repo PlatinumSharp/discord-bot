@@ -4,10 +4,8 @@
 # 最上位のEditorConfigファイル.
 root = true
 
-# C# files
-[*.cs]
-
 #### Core EditorConfig Options ####
+[*]
 # インデントに使用する文字. tab または space.
 indent_style = space
 # インデントのサイズ.
@@ -24,6 +22,9 @@ spelling_language = en-US
 trim_trailing_whitespace =true
 # ファイルの最後に改行を追加するか否か. 絶対いらん.
 insert_final_newline = false
+
+# C# files
+[*.cs]
 
 #### C# 命名規則 ####
 # name all constant fields using PascalCase
