@@ -15,7 +15,7 @@ indent_size = 4
 # タブのサイズ. indent_sizeに同じ
 tab_width = 4
 # 改行文字. lf or cr or crlf.
-end_of_line = crlf
+end_of_line = lf
 # 文字コード. utf-8, utf-16, utf-8-bom, utf-16-be, utf-16-le. EditorConfig公式によると、utf-8-bomは非推奨.
 charset = utf-8
 # スペルチェックの言語. 残念ながら1つだけ指定.
