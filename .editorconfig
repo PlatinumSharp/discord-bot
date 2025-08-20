@@ -324,6 +324,3 @@ csharp_place_field_attribute_on_same_line = false
 
 [*.{csproj,vbproj,proj,nativeproj,locproj}]
 charset = utf-8
-
-
-
