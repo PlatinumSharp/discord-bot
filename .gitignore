@@ -62,3 +62,6 @@ nunit-*.xml
 # JetBains Rider cache directory
 .idea/
 *.DotSettings.user
+
+# Environment variables
+.env
