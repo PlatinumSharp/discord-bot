@@ -1,0 +1,7 @@
+﻿services:
+  rooster.appmain:
+    image: rooster.appmain
+    build:
+      context: .
+      dockerfile: Dockerfile
+
