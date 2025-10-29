@@ -12,11 +12,11 @@ var appEnvironment = Environment.GetEnvironmentVariable("APP_ENVIRONMENT") ?? "D
 Console.WriteLine($"APP_ENVIRONMENT: {appEnvironment}");
 Console.WriteLine($"DISCORD_CHANNEL_ID: {discordChannelId ?? "(not set)"}");
 
-// Only show first/last few characters of token for security
+// Only show first few characters of token for security
 if (!string.IsNullOrEmpty(discordBotToken))
 {
-    var maskedToken = discordBotToken.Length > 10
-        ? $"{discordBotToken[..5]}...{discordBotToken[^5..]}"
+    var maskedToken = discordBotToken.Length > 4
+        ? $"{discordBotToken[..4]}***"
         : "***";
     Console.WriteLine($"DISCORD_BOT_TOKEN: {maskedToken}");
 }

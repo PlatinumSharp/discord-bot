@@ -6,8 +6,4 @@
       dockerfile: Dockerfile
     env_file:
       - .env
-    environment:
-      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
-      - DISCORD_CHANNEL_ID=${DISCORD_CHANNEL_ID}
-      - APP_ENVIRONMENT=${APP_ENVIRONMENT:-Development}
 
