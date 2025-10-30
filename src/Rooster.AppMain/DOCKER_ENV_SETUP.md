@@ -91,13 +91,81 @@ DISCORD_BOT_TOKEN=your_token DISCORD_CHANNEL_ID=123456789 docker compose up
 
 ### 環境変数が読み込まれない場合
 
-1. `.env` ファイルが `compose.yaml` と同じディレクトリにあることを確認
-2. `.env` ファイルの形式が正しいことを確認（`KEY=value` の形式）
-3. Docker Composeを再起動してみる：
-   ```bash
-   docker compose down
-   docker compose up --build
-   ```
+以下の出力が表示される場合:
+```
+DISCORD_CHANNEL_ID: (not set)
+DISCORD_BOT_TOKEN: (not set)
+```
+
+考えられる原因と対処法：
+
+#### 1. `.env` ファイルが存在しない、または名前が間違っている
+
+**確認方法:**
+```bash
+cd src/Rooster.AppMain
+ls -la .env
+```
+
+**対処法:**
+```bash
+# .env.example から .env を作成
+cp .env.example .env
+# エディタで .env を開いて、実際の値を設定
+```
+
+**注意:** ファイル名は `.env` です。`.env.sample` や `.env.example` ではありません。
+
+#### 2. `.env` ファイルの形式が間違っている
+
+**正しい形式:**
+```env
+DISCORD_BOT_TOKEN=ABC123XYZ.Example.YourActualTokenHere
+DISCORD_CHANNEL_ID=1234567890123456789
+APP_ENVIRONMENT=Production
+```
+
+**間違った形式:**
+```env
+# スペースを入れない
+DISCORD_BOT_TOKEN = your_token  ❌
+
+# 引用符で囲まない
+DISCORD_BOT_TOKEN="your_token"  ❌
+DISCORD_BOT_TOKEN='your_token'  ❌
+
+# プレースホルダーのまま
+DISCORD_BOT_TOKEN=your_discord_bot_token_here  ❌
+```
+
+#### 3. `.env` ファイルの内容を確認
+
+```bash
+cd src/Rooster.AppMain
+cat .env
+```
+
+プレースホルダー(`your_discord_bot_token_here` など)が実際の値に置き換えられていることを確認してください。
+
+#### 4. Docker Composeの設定を確認
+
+以下のコマンドで、Docker Composeが環境変数を正しく読み込んでいるか確認できます:
+
+```bash
+cd src/Rooster.AppMain
+docker compose config
+```
+
+`environment` セクションに正しい値が表示されるはずです。
+
+#### 5. Docker Composeを再起動
+
+変更が反映されていない場合は、コンテナを再起動してください:
+
+```bash
+docker compose down
+docker compose up --build
+```
 
 ### アプリケーションのログを確認
 
@@ -108,3 +176,18 @@ docker compose logs
 ```
 
 アプリケーション起動時に設定された環境変数が表示されます（機密情報はマスクされます）。
+
+**正常な出力例:**
+```
+APP_ENVIRONMENT: Production
+DISCORD_CHANNEL_ID: 1234567890123456789
+DISCORD_BOT_TOKEN: MTI3***
+```
+
+**異常な出力例（環境変数が読み込まれていない）:**
+```
+APP_ENVIRONMENT: Development
+DISCORD_CHANNEL_ID: (not set)
+DISCORD_BOT_TOKEN: (not set)
+```
+
