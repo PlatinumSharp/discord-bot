@@ -1,6 +1,0 @@
-﻿<Solution>
-  <Folder Name="/Solution Items/">
-    <File Path="src/Rooster.AppMain/compose.yaml" />
-  </Folder>
-  <Project Path="src/Rooster.AppMain/Rooster.AppMain.csproj" Type="Classic C#" />
-</Solution>

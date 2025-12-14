@@ -3,6 +3,6 @@
     image: rooster.appmain
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: src/Rooster.AppMain/Dockerfile
     environment:
       - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}

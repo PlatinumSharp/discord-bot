@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".env" />
+    <File Path=".env.example" />
+    <File Path="compose.yaml" />
+  </Folder>
+  <Project Path="src/Rooster.AppMain/Rooster.AppMain.csproj" />
+</Solution>
