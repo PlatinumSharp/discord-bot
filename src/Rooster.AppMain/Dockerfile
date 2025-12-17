@@ -1,14 +1,14 @@
-﻿FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/runtime:10.0 AS base
 USER $APP_UID
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Rooster.AppMain.csproj", "./"]
-RUN dotnet restore "Rooster.AppMain.csproj"
+COPY ["Rooster.AppMain/Rooster.AppMain.csproj", "Rooster.AppMain/"]
+RUN dotnet restore "Rooster.AppMain/Rooster.AppMain.csproj"
 COPY . .
-WORKDIR "/src/"
+WORKDIR "/src/Rooster.AppMain"
 RUN dotnet build "./Rooster.AppMain.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
